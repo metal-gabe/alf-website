@@ -1,0 +1,120 @@
+.doc-sidebar {
+   padding-top: 0.5rem;
+   position: sticky;
+   top: calc(var(--header-height) + 1.5rem);
+}
+
+.doc-sidebar__list {
+   display: flex;
+   flex-direction: column;
+   gap: 0.25rem;
+   list-style: none;
+   margin: 0;
+   padding: 0;
+}
+
+.doc-sidebar__section {
+   display: flex;
+   flex-direction: column;
+}
+
+.doc-sidebar__section-btn {
+   align-items: center;
+   background: none;
+   border: none;
+   border-radius: 0.375rem;
+   color: var(--color-text-primary);
+   cursor: pointer;
+   display: flex;
+   font-family: inherit;
+   font-size: 0.8125rem;
+   font-weight: 600;
+   gap: 0.5rem;
+   justify-content: space-between;
+   letter-spacing: 0.025em;
+   padding: 0.375rem 0.5rem;
+   text-align: left;
+   text-transform: uppercase;
+   transition:
+      background-color 0.15s ease,
+      color 0.15s ease;
+   width: 100%;
+}
+
+.doc-sidebar__section-btn:hover {
+   background-color: var(--color-bg-elevated);
+   color: var(--color-accent);
+}
+
+.doc-sidebar__section-title {
+   flex: 1;
+}
+
+.doc-sidebar__chevron {
+   color: var(--color-text-muted);
+   flex-shrink: 0;
+   transition: transform 0.2s ease;
+}
+
+.doc-sidebar__chevron--open {
+   transform: rotate(180deg);
+}
+
+.doc-sidebar__items {
+   display: flex;
+   flex-direction: column;
+   gap: 0.125rem;
+   list-style: none;
+   margin: 0.25rem 0 0.5rem;
+   padding: 0 0 0 0.75rem;
+}
+
+.doc-sidebar__item {
+   border-left: 1px solid var(--color-border);
+}
+
+.doc-sidebar__item-link {
+   border-radius: 0 0.375rem 0.375rem 0;
+   color: var(--color-text-secondary);
+   display: block;
+   font-size: 0.875rem;
+   padding: 0.3125rem 0.75rem;
+   text-decoration: none;
+   transition:
+      color 0.15s ease,
+      background-color 0.15s ease,
+      border-color 0.15s ease;
+}
+
+.doc-sidebar__item-link:hover {
+   background-color: var(--color-bg-elevated);
+   color: var(--color-text-primary);
+   text-decoration: none;
+}
+
+.doc-sidebar__item-link.router-link-active,
+.doc-sidebar__item-link[aria-current='page'] {
+   border-left: 2px solid var(--color-accent);
+   color: var(--color-accent);
+   margin-left: -1px;
+}
+
+.doc-sidebar-expand-enter-active,
+.doc-sidebar-expand-leave-active {
+   overflow: hidden;
+   transition:
+      max-height 0.2s ease,
+      opacity 0.2s ease;
+}
+
+.doc-sidebar-expand-enter-from,
+.doc-sidebar-expand-leave-to {
+   max-height: 0;
+   opacity: 0;
+}
+
+.doc-sidebar-expand-enter-to,
+.doc-sidebar-expand-leave-from {
+   max-height: 500px;
+   opacity: 1;
+}

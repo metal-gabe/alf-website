@@ -1,0 +1,38 @@
+module.exports = {
+   root: true,
+   env: {
+      browser: true,
+      es2022: true,
+      node: true,
+   },
+   extends: [
+      'airbnb-base',
+      'airbnb-typescript/base',
+      'plugin:vue/vue3-recommended',
+      'plugin:@typescript-eslint/recommended',
+      'plugin:prettier/recommended',
+      'prettier',
+   ],
+   plugins: ['@typescript-eslint', 'vue', 'prettier'],
+   parser: 'vue-eslint-parser',
+   parserOptions: {
+      ecmaVersion: 2022,
+      extraFileExtensions: ['.vue'],
+      parser: '@typescript-eslint/parser',
+      project: ['./tsconfig.json'],
+      sourceType: 'module',
+      tsconfigRootDir: __dirname,
+   },
+   rules: {
+      '@typescript-eslint/consistent-type-imports': ['warn', { prefer: 'type-imports' }],
+      'arrow-parens': ['error', 'as-needed'],
+      curly: ['error', 'all'],
+      'import/prefer-default-export': 'off',
+      'no-console': ['warn', { allow: ['error'] }],
+      'vue/html-indent': ['error', 3],
+      'vue/max-len': ['warn', { code: 100 }],
+      'vue/multi-word-component-names': 'off',
+      'vue/jsx-sort-props': 'off',
+   },
+   ignorePatterns: ['.nuxt/**', '.output/**', 'node_modules/**', 'dist/**'],
+};

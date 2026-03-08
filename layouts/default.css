@@ -1,0 +1,37 @@
+.layout {
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
+}
+
+.layout__body {
+   display: flex;
+   flex: 1;
+   gap: 0;
+   margin: 0 auto;
+   max-width: calc(var(--content-max-width) + var(--sidebar-width) + 4rem);
+   padding: 2rem 1.5rem;
+   width: 100%;
+}
+
+.layout__content {
+   flex: 1;
+   max-width: var(--content-max-width);
+   min-width: 0;
+}
+
+.layout__sidebar {
+   display: none;
+   flex-shrink: 0;
+   width: var(--sidebar-width);
+}
+
+@media (min-width: 1024px) {
+   .layout__sidebar {
+      display: block;
+   }
+
+   .layout__body {
+      gap: 3rem;
+   }
+}

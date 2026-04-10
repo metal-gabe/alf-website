@@ -1,0 +1,11 @@
+[build]
+base = "/"
+command = "bun build"
+publish = "dist/"
+
+[build.environment]
+NODE_ENV = "production"
+
+[dev]
+command = "bun run dev"
+targetPort = 4171

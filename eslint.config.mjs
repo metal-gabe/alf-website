@@ -9,7 +9,15 @@ const compat = new FlatCompat({ baseDirectory: __dirname });
 
 export default [
    {
-      ignores: ['.nuxt/**', '.output/**', 'node_modules/**', 'dist/**', 'public/**', 'yarn.lock', 'eslint.config.mjs'],
+      ignores: [
+         '.nuxt/**',
+         '.output/**',
+         'node_modules/**',
+         'dist/**',
+         'public/**',
+         'yarn.lock',
+         'eslint.config.mjs',
+      ],
    },
    ...compat.config({
       root: true,

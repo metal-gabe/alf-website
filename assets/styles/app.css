@@ -11,18 +11,16 @@
    --color-text-muted: #64748b;
    --color-accent: #fd5a1e;
    --color-accent-hover: #e04e18;
-
    --header-height: 4rem;
    --sidebar-width: 18rem;
    --content-max-width: 52rem;
-
    --font-sans: 'Inter', system-ui, sans-serif;
    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
 @media (prefers-color-scheme: light) {
    :root {
-      --color-bg: #ffffff;
+      --color-bg: #fff;
       --color-bg-secondary: #f8fafc;
       --color-bg-elevated: #f1f5f9;
       --color-border: #e2e8f0;

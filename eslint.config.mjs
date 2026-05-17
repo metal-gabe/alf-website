@@ -12,11 +12,13 @@ export default [
       ignores: [
          '.nuxt/**',
          '.output/**',
-         'node_modules/**',
+         '.prettierrc.cjs',
+         '.stylelintrc.js',
          'dist/**',
+         'eslint.config.mjs',
+         'node_modules/**',
          'public/**',
          'yarn.lock',
-         'eslint.config.mjs',
       ],
    },
    ...compat.config({
@@ -50,9 +52,29 @@ export default [
          'import/prefer-default-export': 'off',
          'no-console': ['warn', { allow: ['error'] }],
          'vue/html-indent': ['error', 3],
+         'vue/jsx-sort-props': 'off',
          'vue/max-len': ['warn', { code: 100 }],
          'vue/multi-word-component-names': 'off',
-         'vue/jsx-sort-props': 'off',
       },
    }),
+   {
+      languageOptions: {
+         globals: {
+            clearError: 'readonly',
+            navigateTo: 'readonly',
+            useHead: 'readonly',
+            useNuxtApp: 'readonly',
+            useRoute: 'readonly',
+            useRouter: 'readonly',
+         },
+      },
+      rules: {
+         '@typescript-eslint/no-unused-vars': 'off',
+         'import/extensions': 'off',
+         'import/no-unresolved': ['error', { ignore: ['^~/', '^#'] }],
+         'no-restricted-exports': ['error', { restrictedNamedExports: ['then'] }],
+         'no-unused-vars': ['error', { args: 'after-used', ignoreRestSiblings: true }],
+         'vue/html-indent': 'off',
+      },
+   },
 ];

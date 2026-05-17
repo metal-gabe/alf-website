@@ -36,6 +36,7 @@
 
          <nav aria-label="Main navigation" class="app-header__right">
             <ul class="app-header__nav">
+               <!-- eslint-disable-next-line vue/valid-v-for -->
                <li v-for="link in navLinks" :key="link.href" class="app-header__nav-item">
                   <a
                      v-if="link.external"

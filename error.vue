@@ -10,14 +10,17 @@
 </template>
 
 <script setup lang="ts">
+   import { computed } from 'vue';
    import type { NuxtError } from '#app';
 
    const props = defineProps<{ error: NuxtError }>();
 
+   // eslint-disable-next-line no-unused-vars
    const errorTitle = computed(() => {
       return props.error.statusCode === 404 ? 'Page not found' : 'An error occurred';
    });
 
+   // eslint-disable-next-line no-unused-vars
    function handleError() {
       clearError({ redirect: '/' });
    }

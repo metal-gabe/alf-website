@@ -1,6 +1,7 @@
 <template>
    <nav aria-label="Documentation sections" class="doc-sidebar">
       <ul class="doc-sidebar__list">
+         <!-- eslint-disable-next-line vue/valid-v-for -->
          <li v-for="section in sections" :key="section.href" class="doc-sidebar__section">
             <button
                :aria-expanded="isSectionExpanded(section.href)"
@@ -29,6 +30,7 @@
 
             <Transition name="doc-sidebar-expand">
                <ul v-if="isSectionExpanded(section.href)" class="doc-sidebar__items">
+                  <!-- eslint-disable-next-line vue/valid-v-for -->
                   <li v-for="item in section.items" :key="item.href" class="doc-sidebar__item">
                      <a :href="item.href" class="doc-sidebar__item-link">
                         {{ item.title }}

@@ -1,6 +1,7 @@
 .nuxt/
 .output/
+.vscode/
+bun.lock
 dist/
 node_modules/
 public/
-bun.lock

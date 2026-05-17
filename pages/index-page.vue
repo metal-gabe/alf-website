@@ -42,10 +42,10 @@
          </div>
       </section>
 
-      <section class="index-page__section" id="getting-started">
+      <section id="getting-started" class="index-page__section">
          <h2 class="index-page__section-heading">Getting Started</h2>
 
-         <div class="index-page__subsection" id="installation">
+         <div id="installation" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">Installation</h3>
             <p class="index-page__prose">Install from crates.io (recommended):</p>
             <pre class="index-page__code-block"><code>cargo install alf</code></pre>
@@ -58,7 +58,7 @@
             </p>
          </div>
 
-         <div class="index-page__subsection" id="quick-start">
+         <div id="quick-start" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">Quick Start</h3>
             <p class="index-page__prose">
                Run the one-time initialization wizard. It auto-detects standard shell files, asks
@@ -74,10 +74,10 @@
          </div>
       </section>
 
-      <section class="index-page__section" id="shell-integration">
+      <section id="shell-integration" class="index-page__section">
          <h2 class="index-page__section-heading">Shell Integration</h2>
 
-         <div class="index-page__subsection" id="shell-setup">
+         <div id="shell-setup" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">Setup</h3>
             <p class="index-page__prose">
                Add the shell hook to enable the <code>alf()</code> wrapper function and the
@@ -114,7 +114,7 @@ eval "$(alf shell-hook bash)"</code></pre>
             </div>
          </div>
 
-         <div class="index-page__subsection" id="keybind">
+         <div id="keybind" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">Rebinding</h3>
             <p class="index-page__prose">
                The widget is bound to <code>Ctrl-G</code> by default. To use a different key:
@@ -130,7 +130,7 @@ bind -x '"\C-t": __alf_widget'</code></pre>
             </p>
          </div>
 
-         <div class="index-page__subsection" id="how-it-works">
+         <div id="how-it-works" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">How It Works</h3>
             <ol class="index-page__list">
                <li>
@@ -149,10 +149,10 @@ bind -x '"\C-t": __alf_widget'</code></pre>
          </div>
       </section>
 
-      <section class="index-page__section" id="configuration">
+      <section id="configuration" class="index-page__section">
          <h2 class="index-page__section-heading">Configuration</h2>
 
-         <div class="index-page__subsection" id="config-file">
+         <div id="config-file" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">Config File</h3>
             <p class="index-page__prose">
                The config file is created after running <code>alf init</code>:
@@ -184,7 +184,7 @@ bind -x '"\C-t": __alf_widget'</code></pre>
             </p>
          </div>
 
-         <div class="index-page__subsection" id="general-options">
+         <div id="general-options" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">General</h3>
             <pre class="index-page__code-block"><code>[general]
 shell_files = [
@@ -220,7 +220,7 @@ alias_expansion = "Name"</code></pre>
             </div>
          </div>
 
-         <div class="index-page__subsection" id="search-options">
+         <div id="search-options" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">Search</h3>
             <pre class="index-page__code-block"><code>[search]
 case_matching = "smart"
@@ -260,7 +260,7 @@ substring_matching = true</code></pre>
             </div>
          </div>
 
-         <div class="index-page__subsection" id="ui-options">
+         <div id="ui-options" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">UI &amp; Display</h3>
             <pre class="index-page__code-block"><code>[ui]
 theme = "default"
@@ -314,10 +314,10 @@ parse_comments = true</code></pre>
          </div>
       </section>
 
-      <section class="index-page__section" id="keybindings">
+      <section id="keybindings" class="index-page__section">
          <h2 class="index-page__section-heading">Keybindings</h2>
 
-         <div class="index-page__subsection" id="normal-mode">
+         <div id="normal-mode" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">Normal Mode</h3>
             <div class="index-page__table-wrap">
                <table class="index-page__table">
@@ -413,7 +413,7 @@ parse_comments = true</code></pre>
             </div>
          </div>
 
-         <div class="index-page__subsection" id="search-mode">
+         <div id="search-mode" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">Search Mode</h3>
             <p class="index-page__prose">
                Press <code>/</code> or <code>i</code> from normal mode to enter search mode. Type to
@@ -446,10 +446,10 @@ parse_comments = true</code></pre>
          </div>
       </section>
 
-      <section class="index-page__section" id="reference">
+      <section id="reference" class="index-page__section">
          <h2 class="index-page__section-heading">Reference</h2>
 
-         <div class="index-page__subsection" id="cli-commands">
+         <div id="cli-commands" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">CLI Commands</h3>
             <div class="index-page__table-wrap">
                <table class="index-page__table">
@@ -495,7 +495,7 @@ parse_comments = true</code></pre>
             </div>
          </div>
 
-         <div class="index-page__subsection" id="themes">
+         <div id="themes" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">Themes</h3>
             <p class="index-page__prose">
                Set <code>theme</code> in the <code>[ui]</code> section of your config. Available
@@ -517,7 +517,7 @@ parse_comments = true</code></pre>
             </p>
          </div>
 
-         <div class="index-page__subsection" id="platforms">
+         <div id="platforms" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">Supported Platforms</h3>
             <ul class="index-page__list">
                <li>Linux — x86_64, aarch64</li>

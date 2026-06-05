@@ -22,4 +22,9 @@ export default defineNuxtConfig({
    typescript: {
       typeCheck: false,
    },
+   vite: {
+      server: {
+         allowedHosts: ['alf.local'],
+      },
+   },
 });

@@ -1,12 +1,12 @@
 [build]
 base = "/"
-command = "bun build"
+command = "yarn run build"
 publish = "dist/"
 
 [build.environment]
 NODE_ENV = "production"
 
 [dev]
-command = "bun run dev"
+command = "yarn run dev"
 targetPort = 3701
 port = 9701

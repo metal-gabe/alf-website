@@ -14,8 +14,12 @@ export default defineComponent({
 
       const navLinks = [
          { href: '/', label: 'Docs' },
-         { href: '/changelog', label: 'Changelog' },
-         { href: 'https://github.com', label: 'GitHub', external: true },
+         {
+            href: 'https://github.com/metal-gabe/alf-cli/CHANGELOG.md',
+            label: 'Changelog',
+            external: true,
+         },
+         { href: 'https://github.com/metal-gabe/alf-cli', label: 'GitHub', external: true },
       ];
 
       return { navLinks, openSearch, searchShortcutLabel };

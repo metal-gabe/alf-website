@@ -1,11 +1,9 @@
 <template>
    <div class="index-page">
       <section class="index-page__hero">
-         <h1 class="index-page__title">ALF Documentation</h1>
-         <p class="index-page__subtitle">
-            A Rust-built TUI for searching and running your shell aliases and functions. Install it,
-            run <code>alf init</code>, then press <kbd>Ctrl-G</kbd> from anywhere in your shell.
-         </p>
+         <h1 class="index-page__title">
+            A Rust TUI to search & rediscover your custom shell aliases & functions.
+         </h1>
          <div class="index-page__cta">
             <a class="index-page__cta-primary" href="#getting-started">Get Started</a>
             <a class="index-page__cta-secondary" href="#shell-integration">Shell Integration</a>
@@ -39,20 +37,32 @@
                   vim-style navigation. Tab to populate, Enter to execute.
                </p>
             </a>
+            <a class="index-page__card" href="#reference">
+               <h3 class="index-page__card-title">Reference</h3>
+               <p class="index-page__card-desc">
+                  CLI commands, available themes, and supported platforms.
+               </p>
+            </a>
          </div>
       </section>
 
       <section id="getting-started" class="index-page__section">
-         <h2 class="index-page__section-heading">Getting Started</h2>
+         <SectionHeading id="getting-started">Getting Started</SectionHeading>
 
          <div id="installation" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">Installation</h3>
-            <p class="index-page__prose">Install from crates.io (recommended):</p>
-            <pre class="index-page__code-block"><code>cargo install alf</code></pre>
+            <p class="index-page__prose">
+               Install from <a href="https://crates.io/">crates.io</a> (recommended):
+            </p>
+            <CodeBlock :code="code.cargoInstall" />
+            <p class="index-page__prose">
+               Install from <a href="https://mise.jdx.dev/registry.html#tools">mise</a>:
+            </p>
+            <CodeBlock :code="code.miseInstall" />
+            <p class="index-page__prose">Install from <a href="https://brew.sh/">Homebrew</a>:</p>
+            <CodeBlock :code="code.brewInstall" />
             <p class="index-page__prose">Or install directly from source:</p>
-            <pre
-               class="index-page__code-block"
-            ><code>cargo install --git https://github.com/metal-gabe/alf-cli</code></pre>
+            <CodeBlock :code="code.gitInstall" />
             <p class="index-page__note">
                Requires Rust 1.74.0 or newer. Run <code>rustup update</code> if needed.
             </p>
@@ -64,18 +74,18 @@
                Run the one-time initialization wizard. It auto-detects standard shell files, asks
                about any additional paths, and lets you pick a theme.
             </p>
-            <pre class="index-page__code-block"><code>alf init</code></pre>
+            <CodeBlock :code="code.alfInit" />
             <p class="index-page__prose">Then launch the TUI:</p>
-            <pre class="index-page__code-block"><code>alf</code></pre>
+            <CodeBlock :code="code.alfRun" />
             <p class="index-page__prose">
                You can also pass an initial search query to pre-filter on startup:
             </p>
-            <pre class="index-page__code-block"><code>alf search "git"</code></pre>
+            <CodeBlock :code="code.alfSearch" />
          </div>
       </section>
 
       <section id="shell-integration" class="index-page__section">
-         <h2 class="index-page__section-heading">Shell Integration</h2>
+         <SectionHeading id="shell-integration">Shell Integration</SectionHeading>
 
          <div id="shell-setup" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">Setup</h3>
@@ -83,10 +93,8 @@
                Add the shell hook to enable the <code>alf()</code> wrapper function and the
                <code>Ctrl-G</code> keybinding that opens the picker directly from the prompt.
             </p>
-            <pre class="index-page__code-block"><code># zsh — add to ~/.zshrc
-eval "$(alf shell-hook zsh)"</code></pre>
-            <pre class="index-page__code-block"><code># bash — add to ~/.bashrc
-eval "$(alf shell-hook bash)"</code></pre>
+            <CodeBlock :code="code.zshHook" />
+            <CodeBlock :code="code.bashHook" />
             <p class="index-page__prose">
                Tab and Enter behave differently once the hook is sourced:
             </p>
@@ -119,10 +127,8 @@ eval "$(alf shell-hook bash)"</code></pre>
             <p class="index-page__prose">
                The widget is bound to <code>Ctrl-G</code> by default. To use a different key:
             </p>
-            <pre class="index-page__code-block"><code># zsh
-bindkey '^T' __alf_widget</code></pre>
-            <pre class="index-page__code-block"><code># bash
-bind -x '"\C-t": __alf_widget'</code></pre>
+            <CodeBlock :code="code.zshBind" />
+            <CodeBlock :code="code.bashBind" />
             <p class="index-page__note">
                In bash, pressing Tab inside the TUI cannot populate the readline buffer — this is a
                readline limitation outside of <code>bind -x</code> handlers. Use the
@@ -150,7 +156,7 @@ bind -x '"\C-t": __alf_widget'</code></pre>
       </section>
 
       <section id="configuration" class="index-page__section">
-         <h2 class="index-page__section-heading">Configuration</h2>
+         <SectionHeading id="configuration">Configuration</SectionHeading>
 
          <div id="config-file" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">Config File</h3>
@@ -186,12 +192,7 @@ bind -x '"\C-t": __alf_widget'</code></pre>
 
          <div id="general-options" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">General</h3>
-            <pre class="index-page__code-block"><code>[general]
-shell_files = [
-    "~/.zshrc",
-    "~/.config/zsh/**/*.zsh",
-]
-alias_expansion = "Name"</code></pre>
+            <CodeBlock :code="code.generalConfig" />
             <div class="index-page__table-wrap">
                <table class="index-page__table">
                   <thead>
@@ -222,11 +223,7 @@ alias_expansion = "Name"</code></pre>
 
          <div id="search-options" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">Search</h3>
-            <pre class="index-page__code-block"><code>[search]
-case_matching = "smart"
-normalize = true
-enable_regex = true
-substring_matching = true</code></pre>
+            <CodeBlock :code="code.searchConfig" />
             <div class="index-page__table-wrap">
                <table class="index-page__table">
                   <thead>
@@ -262,14 +259,7 @@ substring_matching = true</code></pre>
 
          <div id="ui-options" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">UI &amp; Display</h3>
-            <pre class="index-page__code-block"><code>[ui]
-theme = "default"
-keybind_mode = "vim"
-
-[display]
-show_type_badges = true
-syntax_highlighting = true
-parse_comments = true</code></pre>
+            <CodeBlock :code="code.uiConfig" />
             <div class="index-page__table-wrap">
                <table class="index-page__table">
                   <thead>
@@ -315,7 +305,7 @@ parse_comments = true</code></pre>
       </section>
 
       <section id="keybindings" class="index-page__section">
-         <h2 class="index-page__section-heading">Keybindings</h2>
+         <SectionHeading id="keybindings">Keybindings</SectionHeading>
 
          <div id="normal-mode" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">Normal Mode</h3>
@@ -447,7 +437,7 @@ parse_comments = true</code></pre>
       </section>
 
       <section id="reference" class="index-page__section">
-         <h2 class="index-page__section-heading">Reference</h2>
+         <SectionHeading id="reference">Reference</SectionHeading>
 
          <div id="cli-commands" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">CLI Commands</h3>
@@ -538,8 +528,28 @@ parse_comments = true</code></pre>
 </template>
 
 <script setup lang="ts">
+   const code = {
+      alfInit: 'alf init',
+      alfRun: 'alf',
+      alfSearch: 'alf search "git"',
+      bashBind: '# bash\nbind -x \'"\\C-t": __alf_widget\'',
+      bashHook: '# bash — add to ~/.bashrc\neval "$(alf shell-hook bash)"',
+      brewInstall: 'brew install alf',
+      cargoInstall: 'cargo install alf',
+      generalConfig:
+         '[general]\nshell_files = [\n    "~/.zshrc",\n    "~/.config/zsh/**/*.zsh",\n]\nalias_expansion = "Name"',
+      gitInstall: 'cargo install --git https://github.com/metal-gabe/alf-cli',
+      miseInstall: 'mise use -g alf',
+      searchConfig:
+         '[search]\ncase_matching = "smart"\nnormalize = true\nenable_regex = true\nsubstring_matching = true',
+      uiConfig:
+         '[ui]\ntheme = "default"\nkeybind_mode = "vim"\n\n[display]\nshow_type_badges = true\nsyntax_highlighting = true\nparse_comments = true',
+      zshBind: "# zsh\nbindkey '^T' __alf_widget",
+      zshHook: '# zsh — add to ~/.zshrc\neval "$(alf shell-hook zsh)"',
+   };
+
    useHead({
-      title: 'ALF Documentation',
+      title: 'Alf CLI Tool',
       meta: [
          {
             content:
@@ -707,23 +717,6 @@ parse_comments = true</code></pre>
       font-size: 0.9375rem;
       line-height: 1.7;
       margin: 0 0 1rem;
-   }
-
-   .index-page__code-block {
-      background-color: var(--color-bg-elevated);
-      border: 1px solid var(--color-border);
-      border-radius: 0.5rem;
-      font-family: var(--font-mono);
-      font-size: 0.875rem;
-      line-height: 1.6;
-      margin: 0 0 1.25rem;
-      overflow-x: auto;
-      padding: 1rem 1.25rem;
-      white-space: pre;
-   }
-
-   .index-page__code-block code {
-      color: var(--color-text-primary);
    }
 
    .index-page__table-wrap {

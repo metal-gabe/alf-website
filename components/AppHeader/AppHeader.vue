@@ -4,7 +4,7 @@
          <div class="app-header__left">
             <NuxtLink class="app-header__logo" to="/">
                <span class="app-header__logo-icon">&#9670;</span>
-               <span class="app-header__logo-text">ALF Docs</span>
+               <span class="app-header__logo-text">Alf CLI</span>
             </NuxtLink>
          </div>
 

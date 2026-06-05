@@ -24,7 +24,7 @@ export default defineComponent({
    },
 
    setup(props) {
-      const expandedSections = ref<Set<string>>(new Set(props.sections.map(s => s.href)));
+      const expandedSections = ref<Set<string>>(new Set());
 
       function toggleSection(href: string) {
          if (expandedSections.value.has(href)) {

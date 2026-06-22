@@ -1,6 +1,6 @@
 <template>
    <div class="code-block">
-      <pre class="code-block__pre"><code>{{ code }}</code></pre>
+      <pre class="code-block__pre"><code v-html="renderedCode"></code></pre>
       <button aria-label="Copy code" class="code-block__copy-btn" type="button" @click="copyCode">
          <svg
             aria-hidden="true"
@@ -22,6 +22,8 @@
 </template>
 
 <script setup lang="ts">
+   import { computed } from 'vue';
+
    const props = defineProps<{
       code: string;
    }>();
@@ -29,6 +31,19 @@
    async function copyCode() {
       await navigator.clipboard.writeText(props.code);
    }
+
+   const renderedCode = computed(() => {
+      return props.code
+         .split('\n')
+         .map(line => {
+            const escaped = line.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            if (/^\s*#/.test(line)) {
+               return `<span class="code-block__comment">${escaped}</span>`;
+            }
+            return escaped;
+         })
+         .join('\n');
+   });
 </script>
 
 <style scoped>
@@ -52,6 +67,10 @@
 
    .code-block__pre code {
       color: var(--color-text-primary);
+   }
+
+   .code-block__pre :deep(.code-block__comment) {
+      color: var(--color-text-muted);
    }
 
    .code-block__copy-btn {

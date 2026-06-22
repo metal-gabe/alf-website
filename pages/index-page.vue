@@ -1,7 +1,9 @@
 <template>
    <div class="index-page">
       <section class="index-page__hero">
-         <h1 class="index-page__title">A Rust TUI to rediscover your custom aliases.</h1>
+         <h1 class="index-page__title">
+            A Rust TUI to rediscover your custom aliases &amp; functions.
+         </h1>
          <div class="index-page__cta">
             <a class="index-page__cta-primary" href="#getting-started">Get Started</a>
             <a class="index-page__cta-secondary" href="#shell-integration">Shell Integration</a>
@@ -20,7 +22,7 @@
             <a class="index-page__card" href="#shell-integration">
                <h3 class="index-page__card-title">Shell Integration</h3>
                <p class="index-page__card-desc">
-                  Add the shell hook for Ctrl-G prompt integration.
+                  Source the shell hook to enable the <code>alf()</code> wrapper function.
                </p>
             </a>
             <a class="index-page__card" href="#configuration">
@@ -50,14 +52,19 @@
          <div id="installation" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">Installation</h3>
             <p class="index-page__prose">
-               Install from <a href="https://crates.io/">crates.io</a> (recommended):
+               <span class="index-page__coming-soon">[Coming Soon!]</span> Install from
+               <a href="https://crates.io/">crates.io</a> (recommended):
             </p>
             <CodeBlock :code="codeExamples.cargoInstall" />
             <p class="index-page__prose">
-               Install from <a href="https://mise.jdx.dev/registry.html#tools">mise</a>:
+               <span class="index-page__coming-soon">[Coming Soon!]</span> Install from
+               <a href="https://mise.jdx.dev/registry.html#tools">mise</a>:
             </p>
             <CodeBlock :code="codeExamples.miseInstall" />
-            <p class="index-page__prose">Install from <a href="https://brew.sh/">Homebrew</a>:</p>
+            <p class="index-page__prose">
+               <span class="index-page__coming-soon">[Coming Soon!]</span> Install from
+               <a href="https://brew.sh/">Homebrew</a>:
+            </p>
             <CodeBlock :code="codeExamples.brewInstall" />
             <p class="index-page__prose">Or install directly from source:</p>
             <CodeBlock :code="codeExamples.gitInstall" />
@@ -88,8 +95,7 @@
          <div id="shell-setup" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">Setup</h3>
             <p class="index-page__prose">
-               Add the shell hook to enable the <code>alf()</code> wrapper function and the
-               <code>Ctrl-G</code> keybinding that opens the picker directly from the prompt.
+               Add the shell hook to enable the <code>alf()</code> wrapper function.
             </p>
             <CodeBlock :code="codeExamples.zshHook" />
             <CodeBlock :code="codeExamples.bashHook" />
@@ -120,20 +126,6 @@
             </div>
          </div>
 
-         <div id="keybind" class="index-page__subsection">
-            <h3 class="index-page__subsection-heading">Rebinding</h3>
-            <p class="index-page__prose">
-               The widget is bound to <code>Ctrl-G</code> by default. To use a different key:
-            </p>
-            <CodeBlock :code="codeExamples.zshBind" />
-            <CodeBlock :code="codeExamples.bashBind" />
-            <p class="index-page__note">
-               In bash, pressing Tab inside the TUI cannot populate the readline buffer — this is a
-               readline limitation outside of <code>bind -x</code> handlers. Use the
-               <code>Ctrl-G</code> binding instead for in-place population.
-            </p>
-         </div>
-
          <div id="how-it-works" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">How It Works</h3>
             <ol class="index-page__list">
@@ -148,6 +140,11 @@
                <li>
                   On Tab or Enter, writes the selection to a temp file that the shell hook reads to
                   populate or execute.
+               </li>
+               <li>
+                  Examples of comment syntax for parsing descriptions:
+                  <CodeBlock :code="codeExamples.commentSingle" />
+                  <CodeBlock :code="codeExamples.commentMulti" />
                </li>
             </ol>
          </div>
@@ -176,7 +173,7 @@
                      </tr>
                      <tr>
                         <td>Windows</td>
-                        <td>%APPDATA%\alf\config.toml</td>
+                        <td>%USERPROFILE%\.config\alf\config.toml</td>
                      </tr>
                   </tbody>
                </table>
@@ -333,20 +330,24 @@
                         <td>Jump to top</td>
                      </tr>
                      <tr>
-                        <td>Ctrl-U</td>
-                        <td>Scroll up 10 lines</td>
+                        <td>Ctrl-J</td>
+                        <td>Scroll down active panel (half page)</td>
                      </tr>
                      <tr>
-                        <td>Ctrl-D</td>
-                        <td>Scroll down 10 lines</td>
+                        <td>Ctrl-K</td>
+                        <td>Scroll up active panel (half page)</td>
+                     </tr>
+                     <tr>
+                        <td>Ctrl-F</td>
+                        <td>Page down (20 lines)</td>
                      </tr>
                      <tr>
                         <td>Ctrl-B</td>
                         <td>Page up (20 lines)</td>
                      </tr>
                      <tr>
-                        <td>Ctrl-F</td>
-                        <td>Page down (20 lines)</td>
+                        <td>Ctrl-U</td>
+                        <td>Clear search query</td>
                      </tr>
                      <tr>
                         <td>/ or i</td>
@@ -365,6 +366,10 @@
                         <td>Show all entries</td>
                      </tr>
                      <tr>
+                        <td>l / h</td>
+                        <td>Cycle filter forward / backward</td>
+                     </tr>
+                     <tr>
                         <td>n / p</td>
                         <td>Cycle to next / previous panel</td>
                      </tr>
@@ -373,11 +378,11 @@
                         <td>Cycle theme forward / backward</td>
                      </tr>
                      <tr>
-                        <td>og / oG</td>
+                        <td>og / oG / Ctrl-G</td>
                         <td>Cycle group mode forward / backward</td>
                      </tr>
                      <tr>
-                        <td>os</td>
+                        <td>os / Ctrl-S</td>
                         <td>Toggle sort order</td>
                      </tr>
                      <tr>
@@ -418,15 +423,35 @@
                   <tbody>
                      <tr>
                         <td>Ctrl-J</td>
-                        <td>Move down through results while typing</td>
+                        <td>Scroll down through results while typing</td>
                      </tr>
                      <tr>
                         <td>Ctrl-K</td>
-                        <td>Move up through results while typing</td>
+                        <td>Scroll up through results while typing</td>
+                     </tr>
+                     <tr>
+                        <td>Shift-N / Shift-P</td>
+                        <td>Cycle panels forward / backward</td>
+                     </tr>
+                     <tr>
+                        <td>Shift-L / Shift-H</td>
+                        <td>Cycle filters forward / backward</td>
+                     </tr>
+                     <tr>
+                        <td>Ctrl-U</td>
+                        <td>Clear search query</td>
+                     </tr>
+                     <tr>
+                        <td>Tab</td>
+                        <td>Populate shell prompt with selected entry</td>
+                     </tr>
+                     <tr>
+                        <td>Enter</td>
+                        <td>Execute selected entry in shell</td>
                      </tr>
                      <tr>
                         <td>Esc</td>
-                        <td>Exit search mode, return to normal mode</td>
+                        <td>Exit search mode, keep query</td>
                      </tr>
                   </tbody>
                </table>
@@ -461,7 +486,7 @@
                         <td>Run the first-time setup wizard</td>
                      </tr>
                      <tr>
-                        <td>alf shell-hook &lt;shell&gt;</td>
+                        <td>alf activate &lt;shell&gt;</td>
                         <td>
                            Print shell integration code for <code>zsh</code> or <code>bash</code>
                         </td>
@@ -530,10 +555,17 @@
       alfInit: 'alf init',
       alfRun: 'alf',
       alfSearch: 'alf search "git"',
-      bashBind: '# bash\nbind -x \'"\\C-t": __alf_widget\'',
-      bashHook: '# bash — add to ~/.bashrc\neval "$(alf shell-hook bash)"',
+      bashHook: '# bash — add to ~/.bashrc\neval "$(alf activate bash)"',
       brewInstall: 'brew install alf',
       cargoInstall: 'cargo install alf',
+      commentMulti:
+         '# alf                       <-- multi-line comment\n' +
+         '# Pull the latest changes\n' +
+         '# from the default remote branch\n' +
+         '# fla\n' +
+         'alias gpl="git pull"',
+      commentSingle:
+         '#@: Show git status :f#     <-- single line comment\n' + 'alias gst="git status"',
       generalConfig:
          '[general]\nshell_files = [\n    "~/.zshrc",\n    "~/.config/zsh/**/*.zsh",\n]\nalias_expansion = "Name"',
       gitInstall: 'cargo install --git https://github.com/metal-gabe/alf-cli',
@@ -542,8 +574,7 @@
          '[search]\ncase_matching = "smart"\nnormalize = true\nenable_regex = true\nsubstring_matching = true',
       uiConfig:
          '[ui]\ntheme = "default"\nkeybind_mode = "vim"\n\n[display]\nshow_type_badges = true\nsyntax_highlighting = true\nparse_comments = true',
-      zshBind: "# zsh\nbindkey '^T' __alf_widget",
-      zshHook: '# zsh — add to ~/.zshrc\neval "$(alf shell-hook zsh)"',
+      zshHook: '# zsh — add to ~/.zshrc\neval "$(alf activate zsh)"',
    };
 
    useHead({
@@ -779,6 +810,12 @@
 
    .index-page__list li {
       margin-bottom: 0.25rem;
+   }
+
+   .index-page__coming-soon {
+      color: #fff176;
+      font-size: 0.8125rem;
+      font-weight: 600;
    }
 
    .index-page__section code {

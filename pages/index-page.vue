@@ -1,9 +1,7 @@
 <template>
    <div class="index-page">
       <section class="index-page__hero">
-         <h1 class="index-page__title">
-            A Rust TUI to search & rediscover your custom shell aliases & functions.
-         </h1>
+         <h1 class="index-page__title">A Rust TUI to rediscover your custom aliases.</h1>
          <div class="index-page__cta">
             <a class="index-page__cta-primary" href="#getting-started">Get Started</a>
             <a class="index-page__cta-secondary" href="#shell-integration">Shell Integration</a>
@@ -54,15 +52,15 @@
             <p class="index-page__prose">
                Install from <a href="https://crates.io/">crates.io</a> (recommended):
             </p>
-            <CodeBlock :code="code.cargoInstall" />
+            <CodeBlock :code="codeExamples.cargoInstall" />
             <p class="index-page__prose">
                Install from <a href="https://mise.jdx.dev/registry.html#tools">mise</a>:
             </p>
-            <CodeBlock :code="code.miseInstall" />
+            <CodeBlock :code="codeExamples.miseInstall" />
             <p class="index-page__prose">Install from <a href="https://brew.sh/">Homebrew</a>:</p>
-            <CodeBlock :code="code.brewInstall" />
+            <CodeBlock :code="codeExamples.brewInstall" />
             <p class="index-page__prose">Or install directly from source:</p>
-            <CodeBlock :code="code.gitInstall" />
+            <CodeBlock :code="codeExamples.gitInstall" />
             <p class="index-page__note">
                Requires Rust 1.74.0 or newer. Run <code>rustup update</code> if needed.
             </p>
@@ -74,13 +72,13 @@
                Run the one-time initialization wizard. It auto-detects standard shell files, asks
                about any additional paths, and lets you pick a theme.
             </p>
-            <CodeBlock :code="code.alfInit" />
+            <CodeBlock :code="codeExamples.alfInit" />
             <p class="index-page__prose">Then launch the TUI:</p>
-            <CodeBlock :code="code.alfRun" />
+            <CodeBlock :code="codeExamples.alfRun" />
             <p class="index-page__prose">
                You can also pass an initial search query to pre-filter on startup:
             </p>
-            <CodeBlock :code="code.alfSearch" />
+            <CodeBlock :code="codeExamples.alfSearch" />
          </div>
       </section>
 
@@ -93,8 +91,8 @@
                Add the shell hook to enable the <code>alf()</code> wrapper function and the
                <code>Ctrl-G</code> keybinding that opens the picker directly from the prompt.
             </p>
-            <CodeBlock :code="code.zshHook" />
-            <CodeBlock :code="code.bashHook" />
+            <CodeBlock :code="codeExamples.zshHook" />
+            <CodeBlock :code="codeExamples.bashHook" />
             <p class="index-page__prose">
                Tab and Enter behave differently once the hook is sourced:
             </p>
@@ -127,8 +125,8 @@
             <p class="index-page__prose">
                The widget is bound to <code>Ctrl-G</code> by default. To use a different key:
             </p>
-            <CodeBlock :code="code.zshBind" />
-            <CodeBlock :code="code.bashBind" />
+            <CodeBlock :code="codeExamples.zshBind" />
+            <CodeBlock :code="codeExamples.bashBind" />
             <p class="index-page__note">
                In bash, pressing Tab inside the TUI cannot populate the readline buffer — this is a
                readline limitation outside of <code>bind -x</code> handlers. Use the
@@ -192,7 +190,7 @@
 
          <div id="general-options" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">General</h3>
-            <CodeBlock :code="code.generalConfig" />
+            <CodeBlock :code="codeExamples.generalConfig" />
             <div class="index-page__table-wrap">
                <table class="index-page__table">
                   <thead>
@@ -223,7 +221,7 @@
 
          <div id="search-options" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">Search</h3>
-            <CodeBlock :code="code.searchConfig" />
+            <CodeBlock :code="codeExamples.searchConfig" />
             <div class="index-page__table-wrap">
                <table class="index-page__table">
                   <thead>
@@ -259,7 +257,7 @@
 
          <div id="ui-options" class="index-page__subsection">
             <h3 class="index-page__subsection-heading">UI &amp; Display</h3>
-            <CodeBlock :code="code.uiConfig" />
+            <CodeBlock :code="codeExamples.uiConfig" />
             <div class="index-page__table-wrap">
                <table class="index-page__table">
                   <thead>
@@ -528,7 +526,7 @@
 </template>
 
 <script setup lang="ts">
-   const code = {
+   const codeExamples = {
       alfInit: 'alf init',
       alfRun: 'alf',
       alfSearch: 'alf search "git"',
@@ -553,7 +551,8 @@
       meta: [
          {
             content:
-               'Official documentation for alf — Alias & Function CLI Searching Tool. A Rust-built TUI for searching and running shell aliases and functions.',
+               'Official documentation for alf — Alias & Function CLI Searching Tool. ' +
+               'A Rust-built TUI for searching and running shell aliases and functions.',
             name: 'description',
          },
       ],

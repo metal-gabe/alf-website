@@ -1,6 +1,7 @@
 import { FlatCompat } from '@eslint/eslintrc';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import pluginVue from 'eslint-plugin-vue';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -30,13 +31,11 @@ export default [
       },
       extends: [
          'airbnb-base',
-         'plugin:vue/vue3-recommended',
          'plugin:@typescript-eslint/recommended',
          'plugin:prettier/recommended',
          'prettier',
       ],
-      plugins: ['@typescript-eslint', 'vue', 'prettier'],
-      parser: 'vue-eslint-parser',
+      plugins: ['@typescript-eslint', 'prettier'],
       parserOptions: {
          ecmaVersion: 2022,
          extraFileExtensions: ['.vue'],
@@ -51,12 +50,9 @@ export default [
          curly: ['error', 'all'],
          'import/prefer-default-export': 'off',
          'no-console': ['warn', { allow: ['error'] }],
-         'vue/html-indent': ['error', 3],
-         'vue/jsx-sort-props': 'off',
-         'vue/max-len': ['warn', { code: 100 }],
-         'vue/multi-word-component-names': 'off',
       },
    }),
+   ...pluginVue.configs['flat/recommended'],
    {
       languageOptions: {
          globals: {
@@ -69,12 +65,31 @@ export default [
          },
       },
       rules: {
-         '@typescript-eslint/no-unused-vars': 'off',
+         '@typescript-eslint/no-unused-vars': [
+            'error',
+            { args: 'after-used', ignoreRestSiblings: true },
+         ],
          'import/extensions': 'off',
          'import/no-unresolved': ['error', { ignore: ['^~/', '^#'] }],
          'no-restricted-exports': ['error', { restrictedNamedExports: ['then'] }],
-         'no-unused-vars': ['error', { args: 'after-used', ignoreRestSiblings: true }],
+         'no-unused-vars': 'off',
          'vue/html-indent': 'off',
+      },
+   },
+   {
+      files: ['**/*.vue'],
+      languageOptions: {
+         parserOptions: {
+            parser: '@typescript-eslint/parser',
+         },
+      },
+      rules: {
+         '@typescript-eslint/no-unused-vars': 'off',
+         'no-unused-vars': 'off',
+         'vue/html-indent': 'off',
+         'vue/jsx-sort-props': 'off',
+         'vue/max-len': ['warn', { code: 100 }],
+         'vue/multi-word-component-names': 'off',
       },
    },
 ];

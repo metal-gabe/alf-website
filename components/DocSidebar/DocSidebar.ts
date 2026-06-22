@@ -23,7 +23,7 @@ export default defineComponent({
       },
    },
 
-   setup(props) {
+   setup() {
       const expandedSections = ref<Set<string>>(new Set());
 
       function toggleSection(href: string) {

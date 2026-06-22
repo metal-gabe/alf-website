@@ -2,6 +2,7 @@ import { defineNuxtConfig } from 'nuxt/config';
 
 export default defineNuxtConfig({
    compatibilityDate: '2025-01-01',
+   debug: process.env.NODE_ENV === 'development',
    devtools: { enabled: true },
    devServer: {
       port: 3701,

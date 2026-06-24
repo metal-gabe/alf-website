@@ -1,4 +1,10 @@
-echo '=====[ Running PRE-COMMIT hooks... ]====='
-bun run lint:es
-bun run lint:style
-bun run type:check
+#!/bin/sh
+# .husky/pre-commit
+
+EXIT_CODE=0;
+
+yarn run secrets:check || EXIT_CODE=$?;
+yarn run lint:commit || EXIT_CODE=$?;
+yarn run circ:check || EXIT_CODE=$?;
+
+exit $EXIT_CODE;

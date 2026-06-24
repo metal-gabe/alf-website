@@ -37,7 +37,9 @@
       "··········································( cleanup )": "",
       "clean": "rimraf .nuxt .output",
       "clean:full": "rimraf .nuxt .output node_modules",
-      "prepare": "husky"
+      "prepare": "husky",
+      "——————————————————————————————————————————[ TEST ]——————————————————————————————————————————": "",
+      "test": "echo '=====[ Running the `TEST` script... ]====='; echo 'NOTE :: No tests have been added yet'; exit 0"
    },
    "scripts-info": {
       "=========================================[ NUXT ]=========================================": "",
